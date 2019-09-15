@@ -50,9 +50,21 @@ class _MyAppState extends State<MyApp> {
                       ),
                       ),
                     ),
-                  Column(children: <Widget>[
-                    Text(tx.title),
-                    Text(tx.date.toString()),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                    Text(tx.title, style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Text(tx.date.toString(), 
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 15,
+                      ),
+                      ),
                   ],)
                 ],);
                 
