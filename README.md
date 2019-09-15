@@ -16,9 +16,11 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 Commits : 
-ColoumnS & Rows
+Coloumns & Rows
 Card list
 Container Styling
 Text Styling
+Coloum & Text Styling
+DateFormat
 
 
