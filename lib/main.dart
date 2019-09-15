@@ -38,7 +38,10 @@ class _MyAppState extends State<MyApp> {
               ),
               Column(children: transactions.map((tx) {
                 return Row(children: <Widget>[
-                  Container( 
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(border: Border.all(color: Colors.black, style: BorderStyle.solid, width: 2)), 
+                    padding: EdgeInsets.all(10),
                     child: Text(tx.amount.toString()),),
                   Column(children: <Widget>[
                     Text(tx.title),
