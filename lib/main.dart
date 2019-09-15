@@ -17,6 +17,12 @@ class _MyAppState extends State<MyApp> {
     Transaction(id: 't2', title: 'Daily Groceries', amount: 25.85, date: DateTime.now()),
   ];
 
+  // String titleInput;
+  // String amountInput;
+  // altenative way to get value of TextFeild
+  final textController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,13 +49,22 @@ class _MyAppState extends State<MyApp> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        TextField(decoration: InputDecoration(labelText: 'Title'),),
-                        TextField(decoration: InputDecoration(labelText: 'Amount'),),
+                        TextField(decoration: InputDecoration(labelText: 'Title'),
+                        //onChanged: (val) => titleInput = val,
+                        controller: textController,
+                        ),
+                        TextField(decoration: InputDecoration(labelText: 'Amount'),
+                        //onChanged: (val) => amountInput = val,
+                        controller: amountController,
+                        ),
                         FlatButton(
                           child: Text('Add Transaction'), 
                           textColor: Colors.purple,
                           onPressed: (){
-
+                              // print(titleInput);
+                              // print(amountInput);
+                              print(textController.text);
+                              print(amountController.text);
                             }
                           ),
                       ],
