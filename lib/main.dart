@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
             title: Text('Expanse Planner'),
           ) ,
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
@@ -34,9 +34,28 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.blue,
                 child: Card(
                     child: Text('Card!!',),
-                    color: Colors.brown,
                   ),
               ),
+              Card(
+                elevation: 5,
+                child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        TextField(decoration: InputDecoration(labelText: 'Title'),),
+                        TextField(decoration: InputDecoration(labelText: 'Amount'),),
+                        FlatButton(
+                          child: Text('Add Transaction'), 
+                          textColor: Colors.purple,
+                          onPressed: (){
+
+                            }
+                          ),
+                      ],
+                    ),
+                ),
+              ), 
               Column(children: transactions.map((tx) {
                 return Row(children: <Widget>[
                   Container(
