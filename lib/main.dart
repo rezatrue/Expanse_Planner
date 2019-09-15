@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,6 +10,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final List<Transaction> transactions =
+  [
+    Transaction(id: 't1', title: 'New Show', amount: 69.59, date: DateTime.now()),
+    Transaction(id: 't2', title: 'Daily Groceries', amount: 25.80, date: DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,9 +36,17 @@ class _MyAppState extends State<MyApp> {
                     color: Colors.brown,
                   ),
               ),
-              Card(
-                color: Colors.red,
-                child: Text('Hello'),),
+              Column(children: transactions.map((tx) {
+                return Row(children: <Widget>[
+                  Container( 
+                    child: Text(tx.amount.toString()),),
+                  Column(children: <Widget>[
+                    Text(tx.title),
+                    Text(tx.date.toString()),
+                  ],)
+                ],);
+                
+              }).toList(),)
             ],
           ),
         ),     
