@@ -12,14 +12,15 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: SingleChildScrollView(
-        child: Column(children: _userTransactions.map((tx) {
-                    return Row(children: <Widget>[
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
+            return Card(
+              child: Row(children: <Widget>[
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         decoration: BoxDecoration(border: Border.all(color: Colors.purple, style: BorderStyle.solid, width: 2)), 
                         padding: EdgeInsets.all(10),
-                        child: Text('\$${tx.amount}' ,
+                        child: Text('\$${_userTransactions[index].amount}' ,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
@@ -30,23 +31,25 @@ class TransactionList extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                        Text(tx.title, style: TextStyle(
+                        Text(_userTransactions[index].title, style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
                         ),
                         Text(
-                          DateFormat.yMMMd().format(tx.date), 
+                          DateFormat.yMMMd().format(_userTransactions[index].date), 
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 15,
                           ),
                           ),
                       ],)
-                    ],);
-                    
-                  }).toList(),),
+                    ],),
+                    );
+        },
+        itemCount: _userTransactions.length,
+     
       ),
     );
   }
