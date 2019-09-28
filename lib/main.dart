@@ -1,3 +1,5 @@
+import 'package:expanse_planner/wedgets/chart.dart';
+
 import './wedgets/transaction_list.dart';
 
 import './wedgets/new_transaction.dart';
@@ -46,10 +48,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = 
   [
-    Transaction(id: 't1', title: 'New Show', amount: 69.59, date: DateTime.now()),
-    Transaction(id: 't2', title: 'Daily Groceries', amount: 25.85, date: DateTime.now()),
+    // Transaction(id: 't1', title: 'New Show', amount: 69.59, date: DateTime.now()),
+    // Transaction(id: 't2', title: 'Daily Groceries', amount: 25.85, date: DateTime.now()),
   ];
 
+List<Transaction> get _recentTransactions{
+
+  return _userTransactions.where((tx){
+    return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+  }).toList();
+}
   void _addNewTransaction(String txTitle, double txAmount){
     final newTx = Transaction (
       title: txTitle,
@@ -101,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       elevation: 5,
                     ),
                 ),
+                Chart(_recentTransactions),
                 TransactionList(_userTransactions),
               ],
             ),
